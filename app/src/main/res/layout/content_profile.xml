@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Actual Name"
-        android:id="@+id/textView2"
+        android:id="@+id/textActualName"
         android:layout_alignBottom="@+id/profileImage"
         android:layout_toEndOf="@+id/profileImage"
         android:layout_marginBottom="16dp"/>
