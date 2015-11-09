@@ -3,9 +3,9 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/profileImage"
+        android:layout_width="250px"
+        android:layout_height="250px"
+        android:id="@+id/userImage"
         android:layout_alignParentTop="true"
         android:layout_marginTop="62dp"
         android:layout_marginLeft="62dp"/>
@@ -16,9 +16,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="username"
         android:id="@+id/textUsername"
-        android:layout_alignBottom="@+id/profileImage"
-        android:layout_toEndOf="@+id/profileImage"
-        android:layout_marginBottom="32dp" />
+        android:layout_alignBottom="@+id/userImage"
+        android:layout_toEndOf="@+id/userImage"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +27,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Actual Name"
         android:id="@+id/textActualName"
-        android:layout_alignBottom="@+id/profileImage"
-        android:layout_toEndOf="@+id/profileImage"
-        android:layout_marginBottom="16dp"/>
+        android:layout_alignBottom="@+id/userImage"
+        android:layout_marginLeft="3dp"
+        android:layout_toEndOf="@+id/userImage"/>
+
 </RelativeLayout>
