@@ -22,10 +22,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adamdonegan.cogs.R;
+import com.adamdonegan.cogs.models.Identity;
+import com.adamdonegan.cogs.models.Profile;
+import com.adamdonegan.cogs.models.Release;
 import com.adamdonegan.cogs.util.CircleTransformation;
 import com.adamdonegan.cogs.util.DiscogsClient;
 import com.adamdonegan.cogs.util.PreferencesManager;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -46,7 +51,8 @@ public class MainActivity extends AppCompatActivity
     DiscogsClient client;
     private PreferencesManager prefsManager;
     private LoadProfileTask task;
-    private JSONObject profile;
+    private Profile profile;
+    String barcode;
 
 
     @Override
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-            String barcode = data.getStringExtra("barcode");
+            barcode = data.getStringExtra("barcode");
             Timber.d(barcode);
             mReturningWithResult = true;
 
@@ -104,7 +110,7 @@ public class MainActivity extends AppCompatActivity
         if (mReturningWithResult) {
 
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, ReleaseFragment.newInstance(999))
+                    .replace(R.id.container, ReleaseFragment.newInstance("5099964272719"))
                     .commit();
 
         }
@@ -161,7 +167,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, ProfileFragment.newInstance(R.id.nav_profile, profile))
+                    .replace(R.id.container, ProfileFragment.newInstance(R.id.nav_profile, null))
                     .commit();
         } else if (id == R.id.nav_collection) {
 
@@ -189,10 +195,16 @@ public class MainActivity extends AppCompatActivity
         protected String doInBackground(String... strings) {
             Timber.d("Loading profile information...");
             try {
-                JSONObject identity = new JSONObject(client.identity());
-                String resourceUrl = (String) identity.get("resource_url");
-                profile = new JSONObject(client.genericGet(resourceUrl));
-                Timber.d(profile.toString());
+                Moshi moshi = new Moshi.Builder().build();
+                JsonAdapter<Identity> identityAdapter = moshi.adapter(Identity.class);
+                JsonAdapter<Profile> profileAdapter = moshi.adapter(Profile.class);
+                JsonAdapter<Release> releaseAdapter = moshi.adapter(Release.class);
+                Release release = releaseAdapter.fromJson(client.release("249504"));
+                Identity identity = identityAdapter.fromJson(client.identity());
+
+                profile = profileAdapter.fromJson(client.genericGet(identity.getResource_url()));
+
+                Timber.d(release.getArtists().get(0).get("name"));
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -203,9 +215,9 @@ public class MainActivity extends AppCompatActivity
         protected void onPostExecute(Object result) {
             Timber.d("Running post-execute code...");
             try {
-                textUsername.setText(profile.getString("username"));
-                textActualName.setText(profile.getString("name"));
-                Picasso.with(getApplicationContext()).load(profile.getString("avatar_url")).transform(new CircleTransformation()).into(userImage);
+                textUsername.setText(profile.getUsername());
+                textActualName.setText(profile.getName());
+                Picasso.with(getApplicationContext()).load(profile.getAvatar_url()).transform(new CircleTransformation()).into(userImage);
             } catch (Exception e){
                 e.printStackTrace();
             }

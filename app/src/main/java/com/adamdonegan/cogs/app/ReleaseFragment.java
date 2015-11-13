@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.adamdonegan.cogs.R;
 import com.adamdonegan.cogs.util.CircleTransformation;
+import com.adamdonegan.cogs.util.DiscogsClient;
+import com.adamdonegan.cogs.util.PreferencesManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -25,16 +27,17 @@ public class ReleaseFragment  extends Fragment {
     private ImageView releaseImage;
     private TextView textName;
     private TextView textArtist;
+    private static final String CONSUMER_KEY = "tZplWaLrLakbPmeKDnNR";
+    private static final String CONSUMER_SECRET = "WlvAHSrMKkEokrhICslQndFmlwjafEwW";
+    private static final String USER_AGENT = "Cogs/0.1 +https://github.com/ajdons/Cogs";
+
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static ReleaseFragment newInstance(int sectionNumber) {
+    public static ReleaseFragment newInstance(String barcode) {
         ReleaseFragment fragment = new ReleaseFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -52,6 +55,8 @@ public class ReleaseFragment  extends Fragment {
                 (CollapsingToolbarLayout) rootView.findViewById(R.id.collapsing_toolbar);
         // Set title of Detail page
         collapsingToolbar.setTitle("Test Release");
+
         return rootView;
     }
+
 }

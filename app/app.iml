@@ -98,8 +98,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services/7.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.jakewharton.timber/timber/4.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.8.3/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/me.dm7.barcodescanner/zbar/1.8.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
@@ -125,17 +123,16 @@
     <orderEntry type="library" exported="" name="play-services-location-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="design-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="moshi-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="timber-4.1.0" level="project" />
     <orderEntry type="library" exported="" name="mediarouter-v7-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="core-1.8.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="zbar-1.8.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-appinvite-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appinvite-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-7.8.0" level="project" />
@@ -147,6 +144,7 @@
     <orderEntry type="library" exported="" name="play-services-wallet-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-appstate-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="okio-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.8.0" level="project" />
   </component>
 </module>

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -18,6 +19,7 @@ import android.view.View;
 import com.adamdonegan.cogs.R;
 import com.adamdonegan.cogs.util.BarcodeTrackerFactory;
 import com.adamdonegan.cogs.util.CameraSourcePreview;
+import com.adamdonegan.cogs.util.CircleTransformation;
 import com.adamdonegan.cogs.util.GraphicOverlay;
 import com.adamdonegan.cogs.util.GraphicTracker;
 import com.google.android.gms.common.ConnectionResult;
@@ -25,8 +27,13 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 /**
  * Activity for the multi-tracker app.  This app detects faces and barcodes with the rear facing
@@ -121,17 +128,7 @@ public final class BarcodeScannerActivity extends AppCompatActivity {
                 Intent returnIntent = getIntent();
                 returnIntent.putExtra("barcode", barcodeValue);
                 setResult(RESULT_OK, returnIntent);
-//                new Thread(){
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Thread.sleep(10); // As I am using LENGTH_LONG in Toast
-//                            BarcodeScannerActivity.this.finish();
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }.start();
+
                 BarcodeScannerActivity.this.finish();
             }
         });
@@ -262,4 +259,5 @@ public final class BarcodeScannerActivity extends AppCompatActivity {
             }
         }
     }
+
 }
