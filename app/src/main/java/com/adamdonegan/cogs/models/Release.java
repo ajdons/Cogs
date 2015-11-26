@@ -12,7 +12,9 @@ public class Release {
     private String thumb;
     private List<Track> tracklist;
     private List<Map<String, String>> artists;
+    private List<Image> images;
     private String resource_url;
+    private String year;
     private String notes;
 
     public String getId() {
@@ -69,5 +71,21 @@ public class Release {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

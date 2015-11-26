@@ -14,6 +14,7 @@ public class MasterRelease {
     private String resource_url;
     private List<Track> tracklist;
     private List<String> genres;
+    private String year;
 
     public String getId() {
         return id;
@@ -77,5 +78,13 @@ public class MasterRelease {
 
     public void setGenres(List<String> genres) {
         this.genres = genres;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

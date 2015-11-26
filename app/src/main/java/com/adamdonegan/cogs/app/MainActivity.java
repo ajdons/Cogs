@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +28,8 @@ import com.adamdonegan.cogs.R;
 import com.adamdonegan.cogs.models.Identity;
 import com.adamdonegan.cogs.models.Profile;
 import com.adamdonegan.cogs.models.Release;
+import com.adamdonegan.cogs.models.Result;
+import com.adamdonegan.cogs.models.SearchResults;
 import com.adamdonegan.cogs.util.CircleTransformation;
 import com.adamdonegan.cogs.util.DiscogsClient;
 import com.adamdonegan.cogs.util.PreferencesManager;
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView userImage;
     private TextView textUsername;
     private TextView textActualName;
+    Moshi moshi;
     DiscogsClient client;
     private PreferencesManager prefsManager;
     private LoadProfileTask task;
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Timber.plant(new Timber.DebugTree());
+        moshi = new Moshi.Builder().build();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         prefsManager = PreferencesManager.getInstance();
@@ -108,10 +115,21 @@ public class MainActivity extends AppCompatActivity
         super.onPostResume();
 
         if (mReturningWithResult) {
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, ReleaseFragment.newInstance("5099964272719"))
-                    .commit();
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        JsonAdapter<SearchResults> searchResultsAdapter = moshi.adapter(SearchResults.class);
+                        //If barcode exists in database, one search result is returned
+                        SearchResults searchResults = searchResultsAdapter.fromJson(client.search(barcode));
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, SearchResultFragment.newInstance(searchResults))
+                                .commit();
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
 
         }
         // Reset the boolean flag back to false for next time.
@@ -130,9 +148,38 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(final String query) {
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JsonAdapter<SearchResults> searchResultsAdapter = moshi.adapter(SearchResults.class);
+                            SearchResults searchResults = searchResultsAdapter.fromJson(client.search(query));
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.container, SearchResultFragment.newInstance(searchResults))
+                                    .commit();
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -147,7 +194,7 @@ public class MainActivity extends AppCompatActivity
 
             return true;
         }else if(id == R.id.action_barcode) {
-            Timber.d("Clicked barcode action");
+            Timber.d("Launching Barcode Activity");
             Intent intent = new Intent(MainActivity.this, BarcodeScannerActivity.class);
             startActivityForResult(intent, 0);
 
@@ -195,16 +242,11 @@ public class MainActivity extends AppCompatActivity
         protected String doInBackground(String... strings) {
             Timber.d("Loading profile information...");
             try {
-                Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<Identity> identityAdapter = moshi.adapter(Identity.class);
                 JsonAdapter<Profile> profileAdapter = moshi.adapter(Profile.class);
-                JsonAdapter<Release> releaseAdapter = moshi.adapter(Release.class);
-                Release release = releaseAdapter.fromJson(client.release("249504"));
                 Identity identity = identityAdapter.fromJson(client.identity());
 
                 profile = profileAdapter.fromJson(client.genericGet(identity.getResource_url()));
-
-                Timber.d(release.getArtists().get(0).get("name"));
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -213,7 +255,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(Object result) {
-            Timber.d("Running post-execute code...");
+            Timber.d("Updating profile UI...");
             try {
                 textUsername.setText(profile.getUsername());
                 textActualName.setText(profile.getName());
