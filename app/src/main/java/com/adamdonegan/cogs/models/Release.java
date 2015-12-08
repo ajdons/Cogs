@@ -16,6 +16,9 @@ public class Release {
     private String resource_url;
     private String year;
     private String notes;
+    private List<Format> formats;
+    private List<Label> labels;
+    private String country;
 
     public String getId() {
         return id;
@@ -87,5 +90,29 @@ public class Release {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<Format> getFormats() {
+        return formats;
+    }
+
+    public void setFormats(List<Format> formats) {
+        this.formats = formats;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public List<Label> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<Label> labels) {
+        this.labels = labels;
     }
 }

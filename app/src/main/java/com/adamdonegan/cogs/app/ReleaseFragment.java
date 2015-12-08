@@ -49,11 +49,13 @@ public class ReleaseFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_release, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity)getActivity()).setSupportActionBar((Toolbar) rootView.findViewById(R.id.toolbar));
+
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#80000000")));
-
-
-        // Set Collapsing Toolbar layout to the screen
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) rootView.findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(mRelease.getTitle());
         releaseImage = (ImageView) rootView.findViewById(R.id.releaseImage);
         Picasso.with(getActivity().getApplicationContext()).load(mRelease.getImages().get(0).getResource_url()).into(releaseImage);
 

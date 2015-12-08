@@ -9,10 +9,11 @@ import java.util.Map;
 public class Artist {
     private String id;
     private List<String> namevariations;
+    private String name;
     private String profile;
     private String releases_url;
     private List<String> urls;
-    private Map<String, String> members;
+    private List<Member> members;
     private List<Image> images;
 
     public String getId() {
@@ -55,11 +56,11 @@ public class Artist {
         this.urls = urls;
     }
 
-    public Map<String, String> getMembers() {
+    public List<Member> getMembers() {
         return members;
     }
 
-    public void setMembers(Map<String, String> members) {
+    public void setMembers(List<Member> members) {
         this.members = members;
     }
 
@@ -69,5 +70,13 @@ public class Artist {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

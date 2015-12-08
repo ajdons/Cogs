@@ -1,6 +1,7 @@
 package com.adamdonegan.cogs.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,15 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adamdonegan.cogs.R;
-import com.adamdonegan.cogs.models.Release;
 import com.adamdonegan.cogs.models.Result;
 import com.adamdonegan.cogs.models.SearchResults;
 import com.adamdonegan.cogs.util.DiscogsClient;
 import com.adamdonegan.cogs.util.PreferencesManager;
-import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.picasso.Picasso;
-import timber.log.Timber;
 
 /**
  * Created by AdamDonegan on 15-11-16.
@@ -64,12 +62,12 @@ public class SearchResultFragment extends Fragment {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.item_card, parent, false));
+            super(inflater.inflate(R.layout.card_result_list_item, parent, false));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     final Result selectedResult = mResults.getResults().get(getAdapterPosition());
-                    String type = selectedResult.getType();
+                    final String type = selectedResult.getType();
 
                     if(type.equals("release")){
 
@@ -77,11 +75,11 @@ public class SearchResultFragment extends Fragment {
                             @Override
                             public void run() {
                                 try {
-                                    JsonAdapter<Release> releaseAdapter = moshi.adapter(Release.class);
-                                    Release release = releaseAdapter.fromJson(client.genericGet(selectedResult.getResource_url()));
-                                    getActivity().getSupportFragmentManager().beginTransaction()
-                                            .replace(R.id.container, ReleaseFragment.newInstance(release))
-                                            .commit();
+                                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                                    intent.putExtra("jsonObject", client.genericGet(selectedResult.getResource_url()));
+                                    intent.putExtra("type", type);
+                                    startActivity(intent);
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -89,10 +87,35 @@ public class SearchResultFragment extends Fragment {
                         });
                     }
                     else if(type.equals("master")){
+                        AsyncTask.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
+                                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                                    intent.putExtra("jsonObject", client.genericGet(selectedResult.getResource_url()));
+                                    intent.putExtra("type", type);
+                                    startActivity(intent);
 
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                     else if(type.equals("artist")){
-
+                        AsyncTask.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
+                                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                                    intent.putExtra("jsonObject", client.genericGet(selectedResult.getResource_url()));
+                                    intent.putExtra("type", type);
+                                    startActivity(intent);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                 }
             });

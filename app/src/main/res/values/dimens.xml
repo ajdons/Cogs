@@ -8,7 +8,9 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="card_height">80dp</dimen>
+    <dimen name="card_list_height">80dp</dimen>
+    <dimen name="card_large_height">240dp</dimen>
+
     <dimen name="md_keylines">16dp</dimen>
     <dimen name="md_keylines_half">8dp</dimen>
     <dimen name="tile_padding">8dp</dimen>

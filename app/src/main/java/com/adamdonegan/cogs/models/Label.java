@@ -12,6 +12,7 @@ public class Label {
     private List<Image> images;
     private List<String> urls;
     private String releases_url;
+    private String resource_url;
 
     public String getId() {
         return id;
@@ -59,5 +60,13 @@ public class Label {
 
     public void setReleases_url(String releases_url) {
         this.releases_url = releases_url;
+    }
+
+    public String getResource_url() {
+        return resource_url;
+    }
+
+    public void setResource_url(String resource_url) {
+        this.resource_url = resource_url;
     }
 }

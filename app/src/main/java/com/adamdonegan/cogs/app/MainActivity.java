@@ -2,7 +2,10 @@ package com.adamdonegan.cogs.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
+import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.adamdonegan.cogs.R;
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView userImage;
     private TextView textUsername;
     private TextView textActualName;
+    private ProgressBar mProgress;
     Moshi moshi;
     DiscogsClient client;
     private PreferencesManager prefsManager;
@@ -74,8 +79,11 @@ public class MainActivity extends AppCompatActivity
         userImage = (ImageView) findViewById(R.id.userImage);
         textUsername = (TextView) findViewById(R.id.textUsername);
         textActualName = (TextView) findViewById(R.id.textActualName);
-        client = new DiscogsClient(CONSUMER_KEY, CONSUMER_SECRET, USER_AGENT, prefsManager.getValue("oauth_token"), prefsManager.getValue("oauth_token_secret"));
+        mProgress = (ProgressBar) findViewById(R.id.progressBar);
 
+        client = new DiscogsClient(CONSUMER_KEY, CONSUMER_SECRET, USER_AGENT, prefsManager.getValue("oauth_token"), prefsManager.getValue("oauth_token_secret"));
+        Timber.d(prefsManager.getValue("oauth_token"));
+        Timber.d(prefsManager.getValue("oauth_token_secret"));
         new LoadProfileTask().execute();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -114,23 +122,10 @@ public class MainActivity extends AppCompatActivity
     protected void onPostResume() {
         super.onPostResume();
 
+        //Returning from Barcode Activity
         if (mReturningWithResult) {
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        JsonAdapter<SearchResults> searchResultsAdapter = moshi.adapter(SearchResults.class);
-                        //If barcode exists in database, one search result is returned
-                        SearchResults searchResults = searchResultsAdapter.fromJson(client.search(barcode));
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container, SearchResultFragment.newInstance(searchResults))
-                                .commit();
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
 
+            new LoadSearchTask().execute(barcode);
         }
         // Reset the boolean flag back to false for next time.
         mReturningWithResult = false;
@@ -151,24 +146,12 @@ public class MainActivity extends AppCompatActivity
 
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(final String query) {
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            JsonAdapter<SearchResults> searchResultsAdapter = moshi.adapter(SearchResults.class);
-                            SearchResults searchResults = searchResultsAdapter.fromJson(client.search(query));
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, SearchResultFragment.newInstance(searchResults))
-                                    .commit();
-                        } catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                searchView.clearFocus();
+                new LoadSearchTask().execute(query);
 
                 return true;
             }
@@ -231,6 +214,36 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public class LoadSearchTask extends AsyncTask<String, Void, Object> {
+        SearchResults searchResults;
+        @Override
+        protected void onPreExecute() {
+            mProgress.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Object doInBackground(String... params) {
+            Timber.d("Retrieving search results...");
+            try {
+                String query = params[0];
+                JsonAdapter<SearchResults> searchResultsAdapter = moshi.adapter(SearchResults.class);
+                searchResults = searchResultsAdapter.fromJson(client.search(query));
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            return "Done";
+        }
+
+        @Override
+        protected void onPostExecute(Object result) {
+            Timber.d("Done.");
+            mProgress.setVisibility(View.INVISIBLE);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, SearchResultFragment.newInstance(searchResults))
+                    .commit();
+        }
+    }
     public class LoadProfileTask extends AsyncTask<String, Void, Object> {
 
         @Override

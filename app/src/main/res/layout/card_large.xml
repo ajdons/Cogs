@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/md_keylines_half"
+    android:layout_marginLeft="@dimen/md_keylines"
+    android:layout_marginRight="@dimen/md_keylines"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/primaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Modern Vampires Of The City"
+            android:layout_marginTop="@dimen/md_keylines_half"
+            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/secondaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artist Title"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@+id/primaryTitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/article_subheading"
+            android:layout_centerHorizontal="true"/>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/secondaryTitle"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:layout_marginRight="@dimen/md_keylines"
+            android:layout_marginTop="@dimen/md_keylines_half"
+            android:background="@color/divider"/>
+        <TextView
+            android:id="@+id/firstItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item1: "
+            android:layout_below="@+id/divider"
+            android:layout_marginTop="@dimen/md_keylines_half"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="sans-serif-condensed"/>
+        <TextView
+            android:id="@+id/firstItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item1value"
+            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_alignBottom="@+id/firstItem"
+            android:layout_marginLeft="80dp"/>
+
+        <TextView
+            android:id="@+id/secondItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item2: "
+            android:layout_below="@+id/firstItem"
+            android:layout_marginTop="@dimen/md_keylines_half"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="sans-serif-condensed"/>
+        <TextView
+            android:id="@+id/secondItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item2value"
+            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_alignBottom="@+id/secondItem"
+            android:layout_marginLeft="80dp"/>
+
+        <TextView
+            android:id="@+id/thirdItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item3: "
+            android:layout_below="@+id/secondItem"
+            android:layout_marginTop="@dimen/md_keylines_half"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/md_keylines_half"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="sans-serif-condensed"/>
+        <TextView
+            android:id="@+id/thirdItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="item3value"
+            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_alignBottom="@+id/thirdItem"
+            android:layout_marginLeft="80dp"/>
+            />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

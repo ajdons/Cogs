@@ -1,6 +1,7 @@
 package com.adamdonegan.cogs.models;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by AdamDonegan on 15-11-13.
@@ -8,12 +9,13 @@ import java.util.List;
 public class MasterRelease {
     private String id;
     private String title;
-    private List<Artist> artists;
+    private List<Map<String, String>> artists;
     private List<Image> images;
     private String versions_url;
     private String resource_url;
     private List<Track> tracklist;
     private List<String> genres;
+    private List<String> styles;
     private String year;
 
     public String getId() {
@@ -32,11 +34,11 @@ public class MasterRelease {
         this.title = title;
     }
 
-    public List<Artist> getArtists() {
+    public List<Map<String, String>> getArtists() {
         return artists;
     }
 
-    public void setArtists(List<Artist> artists) {
+    public void setArtists(List<Map<String, String>> artists) {
         this.artists = artists;
     }
 
@@ -78,6 +80,14 @@ public class MasterRelease {
 
     public void setGenres(List<String> genres) {
         this.genres = genres;
+    }
+
+    public List<String> getStyles() {
+        return styles;
+    }
+
+    public void setStyles(List<String> styles) {
+        this.styles = styles;
     }
 
     public String getYear() {
