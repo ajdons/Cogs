@@ -2,9 +2,7 @@ package com.adamdonegan.cogs.models;
 
 import java.util.List;
 
-/**
- * Created by AdamDonegan on 15-12-04.
- */
+
 public class Format {
     private String name;
     private String qty;

@@ -7,7 +7,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/RobotoTextCondensedStyle</item>
-        <item name="android:buttonStyle">@style/RobotoTextCondensedStyle</item>
         <item name="android:popupMenuStyle">@style/RobotoTextCondensedStyle</item>
     </style>
     <style name="AppTheme.NoActionBar">

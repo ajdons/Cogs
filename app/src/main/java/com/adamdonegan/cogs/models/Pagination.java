@@ -2,9 +2,7 @@ package com.adamdonegan.cogs.models;
 
 import java.util.Map;
 
-/**
- * Created by AdamDonegan on 15-12-07.
- */
+
 public class Pagination {
     private String page;
     private String pages;

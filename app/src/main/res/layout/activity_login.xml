@@ -3,20 +3,23 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/records2">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/loginButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
     <WebView
         android:id="@+id/webview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
     </WebView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Login"
+        android:textAlignment="center"
+        android:id="@+id/loginButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

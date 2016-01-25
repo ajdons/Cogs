@@ -10,7 +10,7 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:theme="@style/AppTheme">
 
 
     <RelativeLayout
@@ -22,30 +22,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Modern Vampires Of The City"
+            android:text="Release Title"
             android:layout_marginTop="@dimen/md_keylines_half"
             android:textColor="@color/text_primary"
             android:fontFamily="sans-serif-condensed"
             android:layout_centerHorizontal="true" />
         <TextView
-            android:id="@+id/secondaryTitle"
+            android:id="@+id/heading2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Artist Title"
             android:fontFamily="sans-serif-condensed"
             android:layout_below="@+id/primaryTitle"
             android:textColor="@color/text_secondary"
-            android:textSize="@dimen/article_subheading"
+            android:textSize="@dimen/text_subheading"
             android:layout_centerHorizontal="true"/>
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/secondaryTitle"
+            android:layout_below="@+id/heading2"
             android:layout_marginLeft="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
             android:layout_marginTop="@dimen/md_keylines_half"
             android:background="@color/divider"/>
+
         <TextView
             android:id="@+id/firstItem"
             android:layout_width="wrap_content"

@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
                 android:text="Description"
-                android:textSize="@dimen/article_titles"
+                android:textSize="@dimen/text_title"
                 android:layout_marginBottom="@dimen/md_keylines" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
                 android:text="Location"
-                android:textSize="@dimen/article_titles"
+                android:textSize="@dimen/text_title"
                 android:layout_marginBottom="@dimen/md_keylines"
                 android:layout_marginTop="@dimen/md_keylines" />
 

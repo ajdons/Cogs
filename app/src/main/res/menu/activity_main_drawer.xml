@@ -2,21 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_profile" android:icon="@mipmap/ic_account"
-            android:title="Profile" android:fontFamily="sans-serif-condensed"/>
         <item android:id="@+id/nav_collection" android:icon="@mipmap/ic_package_variant"
             android:title="Collection" android:fontFamily="sans-serif-condensed"/>
         <item android:id="@+id/nav_wantlist" android:icon="@mipmap/ic_heart"
             android:title="Wantlist" android:fontFamily="sans-serif-condensed"/>
-        <item android:id="@+id/nav_settings" android:icon="@mipmap/ic_wrench"
-            android:title="Settings" android:fontFamily="sans-serif-condensed"/>
+
+        <item android:id="@+id/nav_contact" android:icon="@mipmap/ic_email"
+                android:title="Contact Us" android:fontFamily="sans-serif-condensed"/>
+
     </group>
 
-    <item android:title="Communicate" android:fontFamily="sans-serif-condensed">
-        <menu>
-            <item android:id="@+id/nav_contact" android:icon="@mipmap/ic_email"
-                android:title="Contact Us" android:fontFamily="sans-serif-condensed"/>
-        </menu>
+    <item android:title="" android:fontFamily="sans-serif-condensed">
+            <item android:id="@+id/nav_logout" android:title="Log Out" android:icon="@mipmap/ic_logout"/>
     </item>
 
 </menu>

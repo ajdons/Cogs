@@ -9,5 +9,33 @@
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Barcode detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="year">Year</string>
+    <string name="style">Style</string>
+    <string name="genre">Genre</string>
+    <string name="format">Format</string>
+    <string name="release">Release</string>
+    <string name="label">Label</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_results">Search Results</string>
+    <string name="add_to_collection">Add to collection</string>
+    <string name="add_to_wantlist">Add to wantlist</string>
+    <string name="added_collection">Added to collection</string>
+    <string name="added_wantlist">Added to wantlist</string>
+    <string name="collection">Collection</string>
+    <string name="num_items">" items"</string>
+    <string name="active">Active</string>
+    <string name="inactive">Inactive</string>
+    <string name="rating_updated">Rating updated</string>
+    <string name="view_release_versions">View release versions</string>
+    <string name="view_releases">View releases</string>
+    <string name="my_email">adamjdonegan@gmail.com</string>
+    <string name="email_subject">Re: Cogs for Discogs</string>
+    <string name="email">Email</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout_confirmation">Are you sure you want to log out?</string>
+    <string name="versions_of">Versions of</string>
 
 </resources>

@@ -1,8 +1,6 @@
 package com.adamdonegan.cogs.models;
 
-/**
- * Created by AdamDonegan on 15-11-11.
- */
+
 public class Identity {
 
     private String id;

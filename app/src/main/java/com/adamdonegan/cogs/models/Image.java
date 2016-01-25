@@ -1,8 +1,6 @@
 package com.adamdonegan.cogs.models;
 
-/**
- * Created by AdamDonegan on 15-11-12.
- */
+
 public class Image {
     private String width;
     private String height;

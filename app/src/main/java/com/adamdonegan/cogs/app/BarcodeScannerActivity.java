@@ -67,6 +67,8 @@ public final class BarcodeScannerActivity extends AppCompatActivity {
         int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         if (rc == PackageManager.PERMISSION_GRANTED) {
             createCameraSource();
+            Snackbar.make(mGraphicOverlay, "Tap to focus", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
         } else {
             requestCameraPermission();
         }
@@ -151,7 +153,6 @@ public final class BarcodeScannerActivity extends AppCompatActivity {
 
         mCameraSource = new CameraSource.Builder(getApplicationContext(), barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
-                .setRequestedFps(15.0f)
                 .build();
     }
 
@@ -215,6 +216,8 @@ public final class BarcodeScannerActivity extends AppCompatActivity {
             Log.d(TAG, "Camera permission granted - initialize the camera source");
             // we have permission, so create the camerasource
             createCameraSource();
+            Snackbar.make(mGraphicOverlay, "Tap to focus", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
             return;
         }
 

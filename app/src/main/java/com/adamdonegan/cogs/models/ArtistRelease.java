@@ -1,8 +1,5 @@
 package com.adamdonegan.cogs.models;
 
-/**
- * Created by AdamDonegan on 15-11-13.
- */
 public class ArtistRelease {
     private String id;
     private String title;

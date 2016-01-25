@@ -3,18 +3,17 @@ package com.adamdonegan.cogs.models;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by AdamDonegan on 15-11-11.
- */
 public class Artist {
     private String id;
     private List<String> namevariations;
     private String name;
+    private String realname;
     private String profile;
     private String releases_url;
     private List<String> urls;
     private List<Member> members;
     private List<Image> images;
+    private String resource_url;
 
     public String getId() {
         return id;
@@ -78,5 +77,21 @@ public class Artist {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getResource_url() {
+        return resource_url;
+    }
+
+    public void setResource_url(String resource_url) {
+        this.resource_url = resource_url;
     }
 }

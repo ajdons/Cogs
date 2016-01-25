@@ -1,8 +1,6 @@
 package com.adamdonegan.cogs.models;
 
-/**
- * Created by AdamDonegan on 15-12-04.
- */
+
 public class Member {
     private String id;
     private String name;
@@ -40,4 +38,6 @@ public class Member {
     public void setResource_url(String resource_url) {
         this.resource_url = resource_url;
     }
+
+
 }

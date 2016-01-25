@@ -18,11 +18,11 @@
     <dimen name="article_keylines">72dp</dimen>
     <dimen name="avator_size">40dp</dimen>
     <dimen name="card_title_height">40dp</dimen>
-    <dimen name="article_titles">20sp</dimen>
     <dimen name="cards_button_width">48dp</dimen>
     <dimen name="cards_button_height">48dp</dimen>
-    <dimen name="article_subheading">16sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <dimen name="text_subheading">16sp</dimen>
+    <dimen name="text_body">14sp</dimen>
     <dimen name="card_image_height">200dp</dimen>
-    <dimen name="list_body">14sp</dimen>
     <dimen name="navheader_height">222dp</dimen>
 </resources>

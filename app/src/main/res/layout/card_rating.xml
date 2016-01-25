@@ -19,6 +19,8 @@
         android:text="Rating"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/md_keylines_half"
+        android:layout_marginTop="@dimen/md_keylines_half"
+        android:textColor="@color/text_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <RatingBar

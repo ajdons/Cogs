@@ -30,5 +30,8 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.google.android.gms:play-services:7.8.+'
+    compile 'com.bartoszlipinski.recyclerviewheader:library:1.2.0'
+    compile 'com.github.clans:fab:1.6.2'
+    compile 'xyz.danoz:recyclerviewfastscroller:0.1.3'
 
 }

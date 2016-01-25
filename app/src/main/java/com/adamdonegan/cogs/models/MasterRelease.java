@@ -3,9 +3,7 @@ package com.adamdonegan.cogs.models;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by AdamDonegan on 15-11-13.
- */
+
 public class MasterRelease {
     private String id;
     private String title;

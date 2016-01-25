@@ -22,9 +22,6 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-/**
- * Created by AdamDonegan on 15-11-09.
- */
 public class ReleaseFragment  extends Fragment {
     private ImageView releaseImage;
     private TextView textName;

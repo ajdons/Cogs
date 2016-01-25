@@ -1,8 +1,5 @@
 package com.adamdonegan.cogs.app;
 
-/**
- * Created by AdamDonegan on 15-11-06.
- */
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,9 +15,6 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-/**
- * Created by adamdonegan on 24/05/2014.
- */
 public class ProfileFragment  extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static JSONObject profile;

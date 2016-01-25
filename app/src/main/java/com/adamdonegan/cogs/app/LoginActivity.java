@@ -110,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object result) {
             Timber.d("Running post-execute code...");
+            loginButton.setVisibility(View.INVISIBLE);
+            webview.setVisibility(View.VISIBLE);
             webview.loadUrl(client.getAuthorizationURL());
         }
     }

@@ -2,13 +2,10 @@ package com.adamdonegan.cogs.models;
 
 import java.util.List;
 
-/**
- * Created by AdamDonegan on 15-11-13.
- */
 public class Version {
     private String id;
     private String title;
-    private List<String> format;
+    private String format;
     private String thumb;
     private String label;
     private String released;
@@ -30,11 +27,11 @@ public class Version {
         this.title = title;
     }
 
-    public List<String> getFormat() {
+    public String getFormat() {
         return format;
     }
 
-    public void setFormat(List<String> format) {
+    public void setFormat(String format) {
         this.format = format;
     }
 

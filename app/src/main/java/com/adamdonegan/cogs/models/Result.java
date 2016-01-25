@@ -1,13 +1,16 @@
 package com.adamdonegan.cogs.models;
 
-/**
- * Created by AdamDonegan on 15-11-13.
- */
+import java.util.List;
+
 public class Result {
     private String id;
     private String title;
     private String thumb;
     private String type;
+    private List<String> label;
+    private List<String> format;
+    private String country;
+    private String year;
     private String resource_url;
 
     public String getId() {
@@ -48,5 +51,37 @@ public class Result {
 
     public void setResource_url(String resource_url) {
         this.resource_url = resource_url;
+    }
+
+    public List<String> getLabel() {
+        return label;
+    }
+
+    public void setLabel(List<String> label) {
+        this.label = label;
+    }
+
+    public List<String> getFormat() {
+        return format;
+    }
+
+    public void setFormat(List<String> format) {
+        this.format = format;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }
