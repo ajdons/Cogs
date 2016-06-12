@@ -474,7 +474,7 @@ public class HttpRequest {
      * resulting four Base64 bytes to <var>destination</var>. The source and
      * destination arrays can be manipulated anywhere along their length by
      * specifying <var>srcOffset</var> and <var>destOffset</var>. This method
-     * does not check to make sure your arrays are large enough to accomodate
+     * does not check to make sure your arrays are large enough to accommodate
      * <var>srcOffset</var> + 3 for the <var>source</var> array or
      * <var>destOffset</var> + 4 for the <var>destination</var> array. The
      * actual number of significant bytes in your array is given by
