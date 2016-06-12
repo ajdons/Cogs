@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String verifier = strings[0];
             Timber.d("Getting access token in background...");
-            Timber.d("Verifier recieved: ", verifier);
+            Timber.d("Verifier received: ", verifier);
             client.getAccessToken(verifier);
             prefsManager.setValue("oauth_token", client.getOauthToken());
             prefsManager.setValue("oauth_token_secret", client.getOauthTokenSecret());
